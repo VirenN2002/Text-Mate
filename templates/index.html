@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text-mate</title>
+  <link rel="stylesheet" href="static/css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.13.0/docxtemplater.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzip/3.0.6/pizzip.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+</head>
+<body>
+    <div class="container">
+        <h1>Text-mate</h1>
+
+        <button onclick="selectFeature('text-to-handwriting')">Text to Handwritten Notes</button>
+        <button onclick="selectFeature('photo-to-text')">Photo to Text</button>
+        <button onclick="selectFeature('voice-to-text')">Voice to Text</button>
+
+     
+        <div id="text-to-handwriting-section" style="display: none;">
+        <form id="text-form">
+            <label for="text">Enter Text:</label>
+            <textarea id="text" name="text" placeholder="Type your note here..." required></textarea>
+            <br>
+            <div class="font-settings">
+                <label for="font-size" style="width: 100px;">Font Size:</label>
+                <input type="number" id="font-size" name="font_size" value="40" min="10" max="100" style="width: 150px;" required>
+              
+                <label for="font-color" style="width: 100px; padding-left: 30px;">Font Color:</label>
+                <input type="color" id="font-color" name="font_color" value="#000000" style="width: 100px;" required>
+                <div id="color-preview" class="color-preview" style="height: 25px; width: 40px; padding-right: 10px;"></div>
+              
+            </div>
+            <br>
+            <div class="font-settings">
+                <label for="font" style="width: 100px;">Choose Font:</label>
+                <select id="font" name="font" style="width: 150px;" required>
+                  {% for font_name in font_names %}
+                    <option value="{{ font_name }}">{{ font_name.split('.')[0] }}</option>
+                  {% endfor %}
+                </select>
+
+                <label for="file-format" style="width: 100px; padding-left: 20px;">Download Format:</label>
+                <select id="file-format" name="file_format" style="width: 150px;"required>
+                <option value="png">PNG</option>
+                <option value="jpg">JPG</option>
+                <option value="pdf">PDF</option>
+                <option value="txt">Text</option>
+                <option value="docx">Word</option>
+                </select>
+            </div>
+            
+            <br>
+            <button type="submit">Generate Handwritten Note</button>
+            <button type="button" id="clear-text">Clear</button>
+        </form>
+
+        <div id="output-container" style="display: none;">
+            <h2>Preview:</h2>
+            <img id="generated-image" src="" alt="Generated Handwritten Note">
+            <a id="download-link" href="" download>Download Note</a>
+        </div>
+        </div>
+
+        <div id="photo-to-text-section" style="display: none;">
+        <form id="photo-form" enctype="multipart/form-data">
+            <label for="photo">Upload Photo:</label>
+            <input type="file" id="photo" name="photo" required>
+            <button type="submit">Extract Text from Photo</button>
+        </form>
+        <div id="photo-output" style="display: none;">
+            <h3>Extracted Text:</h3>
+            <p id="photo-text"></p>
+        </div>
+        </div>
+
+        
+    <div id="voice-to-text-section" style="display: none;">
+        <h3>Start Speaking, and your speech will be converted to text:</h3>
+        <button id="start-voice">Start Listening</button>
+        <button id="stop-voice">Stop Listening</button>
+        <button id="clear-voice-text">Clear</button>
+        <br>
+
+        <textarea id="voice-text" placeholder="Transcribed text will appear here..." readonly></textarea>
+        <br>
+        
+        <div class="font-settings">
+            <label for="voice-font-size" style="width: 100px;" >Font Size:</label>
+            <input type="number" id="voice-font-size"  name="voice_font_size" value="40" min="10" max="100" style="width: 100px; ">
+            <label for="voice-font-color" style="width: 100px; padding-left: 30px;">Font Color:</label>
+            <input type="color" id="voice-font-color" name="voice_font_color"  style="width: 100px;">
+        </div>
+        
+        <br>
+        <button id="generate-preview">Generate Preview</button>
+        <div id="preview-container" style="display: none;">
+        <h3>Preview:</h3>
+        <div id="preview-text"></div>
+        </div>
+    
+        <br>
+        <label for="voice-file-format">Download Format:</label>
+        <select id="voice-file-format">
+        <option value="txt">Text File (.txt)</option>
+        <option value="pdf">PDF (.pdf)</option>
+        <option value="png">Image (.png)</option>
+        <option value="jpg">Image (.jpg)</option>
+        <option value="jpeg">Image (.jpeg)</option>
+        </select>
+        <button id="download-voice-text" style="display: none;">Download</button>
+    </div>
+  
+</div>  
+      
+
+  <script src="/static/js/feature_switch.js"></script>
+  <script src="/static/js/text_to_handwritten.js"></script>
+  <script src="/static/js/photo_to_text.js"></script>
+  <script src="/static/js/voice_to_text.js"></script>
+</body>
+</html>

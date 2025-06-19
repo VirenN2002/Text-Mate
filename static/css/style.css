@@ -1,0 +1,256 @@
+/* Global styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f4f6;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #1a202c;
+  text-align: center;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+/* Container styles */
+.container {
+  width: 100%;
+  max-width: 650px; /* Fixed width of 650px */
+  margin: 0 auto; /* Centers the container */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Button styles */
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Feature sections */
+#input-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#feature-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+#feature-content {
+  margin: 20px 0;
+}
+
+#output {
+  font-size: 1.2rem;
+  color: #4A5568;
+}
+
+/* Text to Handwriting Section */
+#text-to-handwriting-section form {
+  background-color: #f9fafb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-size: 1rem;
+  color: #2d3748;
+  margin-bottom: 4px; /* Reduced margin for label and text proximity */
+  display: inline-block;
+}
+
+textarea, input, select {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 20px; /* Increased margin between different labels and inputs */
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+textarea {
+  min-height: 100px;
+  font-family: 'Courier New', monospace;
+}
+
+button[type="submit"] {
+  width: auto;
+  background-color: #007BFF;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+button[type="button"] {
+  background-color: #FF6347;
+  padding: 12px 30px;
+}
+
+#output-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#generated-image {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+a#download-link {
+  text-decoration: none;
+  background-color: #FF6347;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+a#download-link:hover {
+  background-color: #e55347;
+}
+
+/* Photo to Text Section */
+#photo-to-text-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#photo-form input[type="file"] {
+  margin-bottom: 20px; /* Increased space between input elements */
+}
+
+#photo-output {
+  margin-top: 20px;
+}
+
+#photo-text {
+  font-size: 1.1rem;
+  color: #4A5568;
+}
+
+/* Voice to Text Section */
+#voice-to-text-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#start-voice, #stop-voice {
+  background-color: #FF8C00;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+#start-voice:hover, #stop-voice:hover {
+  background-color: #e67e00;
+}
+
+#voice-output {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #4A5568;
+}
+
+/* Font Settings - Font Size, Color, and Font Preview */
+.font-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px; /* Increased margin for spacing */
+}
+
+.font-settings label {
+  font-size: 1rem;
+  color: #2d3748;
+  margin-bottom: 4px;
+}
+
+.font-settings input,
+.font-settings select {
+  width: 30%;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.font-settings input[type="number"] {
+  width: 40%;
+}
+
+/* Color preview box */
+.color-preview {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  margin-right: 10px; /* Added space between the color preview and the font select */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 15px;
+    margin: 0 15px; /* Adjusts margin on smaller screens */
+  }
+
+  button {
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  #text-to-handwriting-section form,
+  #photo-to-text-section form {
+    width: 100%;
+  }
+
+  textarea {
+    min-height: 100px;
+  }
+
+  .font-settings {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .font-settings input,
+  .font-settings select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
