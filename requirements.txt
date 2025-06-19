@@ -2,3 +2,4 @@ Flask
 pytesseract
 Pillow
 SpeechRecognition
+pip freeze > requirements.txt
